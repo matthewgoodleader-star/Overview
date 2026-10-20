@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Good | Operations & Technical Support Leader</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            700: '#243b53',
+                            800: '#102a43',
+                            900: '#1b365d', // Primary Executive Navy
+                            950: '#0b1d33',
+                        },
+                        slateCustom: {
+                            600: '#4a5568',
+                            700: '#334155',
+                            800: '#1e293b',
+                        },
+                        accent: {
+                            gold: '#d97706',
+                            blue: '#2563eb',
+                            emerald: '#059669',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0b1d33 0%, #1b365d 60%, #1e293b 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(27, 54, 93, 0.08), 0 8px 10px -6px rgba(27, 54, 93, 0.04);
+        }
+        .glass-nav {
+            background: rgba(11, 29, 51, 0.92);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-navy-900 selection:text-white">
+
+    <!-- Toast Notification for Copy Actions -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-navy-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 border border-navy-700">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Copied to clipboard!</span>
+    </div>
+
+    <!-- 1. Modern Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-navy-800 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-navy-900 flex items-center justify-center font-bold text-lg shadow-md border border-amber-400/30 group-hover:scale-105 transition-transform">
+                        MG
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight block text-white group-hover:text-amber-400 transition-colors">Matthew Good</span>
+                        <span class="text-xs text-slate-400 block -mt-1 font-medium">Operations & Support Leader</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium">
+                    <a href="#about" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-white/5 transition-all">About</a>
+                    <a href="#competencies" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-white/5 transition-all">Competencies</a>
+                    <a href="#experience" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-white/5 transition-all">Experience</a>
+                    <a href="#case-studies" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-white/5 transition-all">Case Studies</a>
+                    <a href="#operational-tool" class="px-3 py-2 rounded-lg hover:text-amber-400 hover:bg-white/5 transition-all">Kaizen Tool</a>
+                    <a href="#contact" class="ml-2 px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02]">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-navy-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-950 border-b border-navy-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="#about" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-navy-800 hover:text-amber-400">About</a>
+            <a href="#competencies" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-navy-800 hover:text-amber-400">Competencies</a>
+            <a href="#experience" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-navy-800 hover:text-amber-400">Experience</a>
+            <a href="#case-studies" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-navy-800 hover:text-amber-400">Case Studies</a>
+            <a href="#operational-tool" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-navy-800 hover:text-amber-400">Kaizen Tool</a>
+            <a href="#contact" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-semibold bg-amber-500 text-slate-950 text-center mt-4">Get In Touch</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 gradient-bg text-white relative overflow-hidden">
+        <!-- Subtle Grid Background Overlay -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-navy-800/80 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                        <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                        <span>USMC Veteran &bull; Enterprise Operations Leader</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Driving Operational Precision & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Scalable Throughput</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">
+                        Accomplished Support & Operations Leader with <span class="font-semibold text-white">13+ years</span> scaling high-volume technical operations, call centers, and supply chain logistics. Proven single point of accountability skilled in Kaizen continuous improvement, SLA/KPI optimization, and building high-trust, team-first cultures.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold shadow-xl shadow-amber-500/20 transition-all hover:scale-[1.02]">
+                            <i class="fa-solid fa-envelope mr-2"></i> Contact Matthew
+                        </a>
+                        <button onclick="copyEmailDirect()" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-navy-800/80 hover:bg-navy-700 text-white font-semibold border border-slate-600/50 backdrop-blur-sm transition-all hover:scale-[1.02]">
+                            <i class="fa-solid fa-copy mr-2 text-amber-400"></i> Copy Email
+                        </button>
+                        <a href="#experience" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-slate-800/50 hover:bg-slate-800 text-slate-300 hover:text-white font-medium border border-slate-700 transition-all">
+                            <i class="fa-solid fa-briefcase mr-2"></i> View Career History
+                        </a>
+                    </div>
+
+                    <!-- Quick Location/Status Tags -->
+                    <div class="pt-6 border-t border-slate-700/60 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+                        <span class="flex items-center"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Dayton, OH (Open to Regional & Remote)</span>
+                        <span class="flex items-center"><i class="fa-solid fa-check-circle text-emerald-400 mr-2"></i> Open for Executive & Operations Roles</span>
+                    </div>
+                </div>
+
+                <!-- Executive Snapshot Card -->
+                <div class="lg:col-span-4">
+                    <div class="bg-navy-800/90 border border-navy-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-md relative overflow-hidden">
+                        <div class="absolute top-0 right-0 transform translate-x-4 -translate-y-4 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
+                        
+                        <h3 class="text-xl font-bold text-white mb-4 border-b border-navy-700 pb-3 flex items-center justify-between">
+                            <span>Leadership Snapshot</span>
+                            <i class="fa-solid fa-user-check text-amber-400"></i>
+                        </h3>
+
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-box-archive text-amber-400 mt-1 mr-3 flex-shrink-0"></i>
+                                <span><strong class="text-white">USMC Logistics Roots:</strong> Managed $7M+ in high-stakes inventory with 100% audit accuracy using GCSS-MC.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-chart-line text-emerald-400 mt-1 mr-3 flex-shrink-0"></i>
+                                <span><strong class="text-white">KPI Driving:</strong> Elevating FCR by +21%, reducing call volume by 24%, and boosting FRT by 30%.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-people-roof text-blue-400 mt-1 mr-3 flex-shrink-0"></i>
+                                <span><strong class="text-white">Talent Engine:</strong> Promoted 70+ agents into advanced roles, handling 87% of departmental promotions.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-arrows-spin text-amber-400 mt-1 mr-3 flex-shrink-0"></i>
+                                <span><strong class="text-white">Kaizen Discipline:</strong> Decadelong commitment to continuous incremental and major operational improvements.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Key Metrics Highlights Bar -->
+    <section id="about" class="py-12 bg-navy-950 border-y border-navy-800 text-white relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                
+                <div class="p-6 rounded-2xl bg-navy-900/60 border border-navy-800 hover:border-amber-500/40 transition-all group">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-amber-400 mb-1 group-hover:scale-105 transition-transform">72,500+</div>
+                    <div class="text-xs sm:text-sm font-medium text-slate-300">Enterprise Devices Provisioned</div>
+                    <div class="text-[11px] text-slate-500 mt-1">Across 14,500+ global sites</div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-navy-900/60 border border-navy-800 hover:border-emerald-500/40 transition-all group">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1 group-hover:scale-105 transition-transform">+21%</div>
+                    <div class="text-xs sm:text-sm font-medium text-slate-300">FCR Improvement</div>
+                    <div class="text-[11px] text-slate-500 mt-1">First Contact Resolution elevation</div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-navy-900/60 border border-navy-800 hover:border-blue-500/40 transition-all group">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-1 group-hover:scale-105 transition-transform">$7M+</div>
+                    <div class="text-xs sm:text-sm font-medium text-slate-300">Military Inventory Managed</div>
+                    <div class="text-[11px] text-slate-500 mt-1">USMC 100% audit accuracy</div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-navy-900/60 border border-navy-800 hover:border-amber-500/40 transition-all group">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-amber-400 mb-1 group-hover:scale-105 transition-transform">70+</div>
+                    <div class="text-xs sm:text-sm font-medium text-slate-300">Leaders Promoted</div>
+                    <div class="text-[11px] text-slate-500 mt-1">87% of support leadership pipeline</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Core Competencies & Skills Section -->
+    <section id="competencies" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">Core Competencies & Toolset</h2>
+                <p class="mt-3 text-slateCustom-600 text-base sm:text-lg">Combining military supply chain precision with enterprise technical support leadership.</p>
+                
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8" id="skills-tabs">
+                    <button onclick="filterSkills('all')" class="tab-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-navy-900 text-white shadow-md">All Capabilities</button>
+                    <button onclick="filterSkills('ops')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-200 border border-slate-300">Operations & Logistics</button>
+                    <button onclick="filterSkills('kpi')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-200 border border-slate-300">KPI & Governance</button>
+                    <button onclick="filterSkills('talent')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-200 border border-slate-300">Talent & Culture</button>
+                    <button onclick="filterSkills('tech')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-200 border border-slate-300">Tech & Systems</button>
+                </div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-grid">
+                
+                <!-- Operations & Logistics -->
+                <div class="skill-card ops p-6 bg-white rounded-2xl border border-slate-200 card-shadow hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-4 font-bold">
+                        <i class="fa-solid fa-boxes-packing"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Warehouse & Inventory Management</h3>
+                    <p class="text-sm text-slateCustom-600">Managed $7M+ in high-stakes military assets (GCSS-MC) and vendor purchasing/RMA inventory operations.</p>
+                </div>
+
+                <div class="skill-card ops p-6 bg-white rounded-2xl border border-slate-200 card-shadow hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900/10 text-navy-900 flex items-center justify-center text-xl mb-4 font-bold">
+                        <i class="fa-solid fa-arrows-spin"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Kaizen Continuous Improvement</h3>
+                    <p class="text-sm text-slateCustom-600">10+ years driving incremental and systemic process optimizations to remove friction and boost throughput.</p>
+                </div>
+
+                <!-- KPI & Governance -->
+                <div class="skill-card kpi p-6 bg-white rounded-2xl border border-slate-200 card-shadow hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-xl mb-4 font-bold">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">SLA & KPI Performance Optimization</h3>
+                    <p class="text-sm text-slateCustom-600">Mastery over operational metrics: FCR (+21%), FRT (+30%), ART (-17%), AHT (-10%), and call volume reduction.</p>
+                </div>
+
+                <div class="skill-card kpi p-6 bg-white rounded-2xl border border-slate-200 card-shadow hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900/10 text-navy-900 flex items-center justify-center text-xl mb-4 font-bold">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Governance & Financial Oversight</h3>
+                    <p class="text-sm text-slateCustom-600">Served on Klepinger Community School Board, navigating state CPA financial audits and Sunshine Law compliance.</p>
+                </div>
+
+                <!-- Talent & Culture -->
+                <div class="skill-card talent p-6 bg-white rounded-2xl border border-slate-200 card-shadow hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-xl mb-4 font-bold">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Leadership Engine & Onboarding</h3>
+                    <p class="text-sm text-slateCustom-600">Built internal talent pipelines promoting 70+ agents; designed rapid onboarding frameworks training 75+ reps in 6 months.</p>
+                </div>
+
+                <!-- Tech Stack -->
+                <div class="skill-card tech p-6 bg-white rounded-2xl border border-slate-200 card-shadow hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-4 font-bold">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Enterprise Software & Analytics</h3>
+                    <p class="text-sm text-slateCustom-600">ServiceNow, Jira, Tableau, ITIL v4, Mitel VoIP Systems, Brightmetrics, GCSS-MC, and Excel/Sheets Data Modeling.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Professional Career Experience Timeline -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">Professional Leadership Timeline</h2>
+                <p class="mt-3 text-slateCustom-600 text-base sm:text-lg">13+ years of continuous growth, operational accountability, and military service.</p>
+            </div>
+
+            <!-- Timeline Stack -->
+            <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-slate-200">
+
+                <!-- 1. Technical Support Manager -->
+                <div class="relative flex flex-col sm:flex-row items-center group">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-navy-900 text-amber-400 font-bold border-4 border-white shadow-md z-10 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                        <i class="fa-solid fa-briefcase text-xs"></i>
+                    </div>
+                    <div class="w-full sm:w-[calc(50%-2.5rem)] sm:mr-auto p-6 bg-slate-50 border border-slate-200 rounded-2xl card-shadow mt-4 sm:mt-0">
+                        <div class="flex flex-wrap items-center justify-between border-b border-slate-200 pb-3 mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block">STRATACACHE</span>
+                                <h3 class="text-xl font-bold text-navy-900">Technical Support Manager</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-navy-900 text-white text-xs font-semibold rounded-full mt-1 sm:mt-0">05/2013 – Present</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-slateCustom-600">
+                            <li class="flex items-start">
+                                <span class="text-amber-500 font-bold mr-2">&bull;</span>
+                                <span><strong class="text-slate-900">Scaled Hardware Rollouts:</strong> Scaled provisioning and hiring frameworks for 30+ major hardware deployments (3,000 to 35,000+ devices) for global enterprise accounts.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 font-bold mr-2">&bull;</span>
+                                <span><strong class="text-slate-900">Premier Talent Engine:</strong> Promoted 70+ agents into Tier 2, DevOps, PM, and Account Management roles (87% of all support-to-leadership promotions).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 font-bold mr-2">&bull;</span>
+                                <span><strong class="text-slate-900">KPI Performance Elevation:</strong> Improved First Contact Resolution (FCR) by 21% by removing escalation bottlenecks and rebuilding knowledge workflows.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 font-bold mr-2">&bull;</span>
+                                <span><strong class="text-slate-900">Multi-Channel Expansion:</strong> Built enterprise email support, cutting First Response Time (FRT) by 30% and elevating email FCR to 91%.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. NOC Supervisor -->
+                <div class="relative flex flex-col sm:flex-row items-center group">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-navy-900 text-amber-400 font-bold border-4 border-white shadow-md z-10 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                        <i class="fa-solid fa-network-wired text-xs"></i>
+                    </div>
+                    <div class="w-full sm:w-[calc(50%-2.5rem)] sm:ml-auto p-6 bg-slate-50 border border-slate-200 rounded-2xl card-shadow mt-4 sm:mt-0">
+                        <div class="flex flex-wrap items-center justify-between border-b border-slate-200 pb-3 mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block">STRATACACHE</span>
+                                <h3 class="text-xl font-bold text-navy-900">NOC Supervisor & Lead Trainer</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-slate-200 text-slate-800 text-xs font-semibold rounded-full mt-1 sm:mt-0">10/2012 – 05/2013</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-slateCustom-600">
+                            <li class="flex items-start">
+                                <span class="text-amber-500 font-bold mr-2">&bull;</span>
+                                <span><strong class="text-slate-900">Rapid Onboarding Engine:</strong> Trained 75+ support agents in 6 months for a global digital menu board rollout (14,500 sites / 72,500 devices).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 font-bold mr-2">&bull;</span>
+                                <span><strong class="text-slate-900">Proactive Call Reduction:</strong> Decreased inbound support calls by 24% by automating reporting tasks and standardizing outbound monitoring.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Tech Support Analyst & Operations Specialist -->
+                <div class="relative flex flex-col sm:flex-row items-center group">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-navy-900 text-amber-400 font-bold border-4 border-white shadow-md z-10 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                        <i class="fa-solid fa-headset text-xs"></i>
+                    </div>
+                    <div class="w-full sm:w-[calc(50%-2.5rem)] sm:mr-auto p-6 bg-slate-50 border border-slate-200 rounded-2xl card-shadow mt-4 sm:mt-0">
+                        <div class="flex flex-wrap items-center justify-between border-b border-slate-200 pb-3 mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block">STRATACACHE & Computer Zoo</span>
+                                <h3 class="text-xl font-bold text-navy-900">Support Analyst / Operations Specialist</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-slate-200 text-slate-800 text-xs font-semibold rounded-full mt-1 sm:mt-0">06/2008 – 10/2012</span>
+                        </div>
+                        <p class="text-sm text-slateCustom-600 leading-relaxed">
+                            Managed purchasing orders, inventory scheduling, vendor RMA processes, hardware troubleshooting, and authored KB provisioning documentation for high-volume enterprise hardware rollouts.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. USMC Military Service -->
+                <div class="relative flex flex-col sm:flex-row items-center group">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-amber-500 text-slate-950 font-bold border-4 border-white shadow-md z-10 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                        <i class="fa-solid fa-anchor text-xs"></i>
+                    </div>
+                    <div class="w-full sm:w-[calc(50%-2.5rem)] sm:ml-auto p-6 bg-navy-900 border border-navy-800 text-white rounded-2xl shadow-xl mt-4 sm:mt-0">
+                        <div class="flex flex-wrap items-center justify-between border-b border-navy-700 pb-3 mb-3">
+                            <div>
+                                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">United States Marine Corps</span>
+                                <h3 class="text-xl font-bold text-white">Inventory Management Specialist</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-semibold rounded-full mt-1 sm:mt-0">08/2002 – 07/2006</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-amber-400 mt-1 mr-2 text-xs"></i>
+                                <span><strong class="text-white">$7M+ Inventory Oversight:</strong> Maintained 100% record accuracy across regular audits and cycle counts using GCSS-MC.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-amber-400 mt-1 mr-2 text-xs"></i>
+                                <span><strong class="text-white">Military Logistics Discipline:</strong> Managed packing, regulatory compliance, and rapid tactical deployments under strict deadlines.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Featured Operational Case Studies -->
+    <section id="case-studies" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">Featured Operational Wins</h2>
+                <p class="mt-3 text-slateCustom-600 text-base sm:text-lg">Concrete examples of turning complex operational challenges into streamlined systems.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Case Study 1 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 card-shadow hover:border-navy-700/30 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="p-3 rounded-xl bg-navy-900 text-amber-400"><i class="fa-solid fa-server text-lg"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold text-navy-900">72,500+ Device Rapid Rollout</h3>
+                                <span class="text-xs text-slate-500 font-medium">Global QSR Digital Menu Expansion</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slateCustom-600 mb-6 leading-relaxed">
+                            <strong>Challenge:</strong> Rapidly onboarding and provisioning technical support for 14,500 enterprise store locations without bottlenecking tier-2 escalations.
+                            <br><br>
+                            <strong>Execution:</strong> Built an integrated onboarding academy that trained 75+ support reps in 6 months. Standardized hardware troubleshooting playbooks and automated daily monitoring reporting.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-600">
+                        <span><i class="fa-solid fa-arrow-trend-up mr-1"></i> -24% Inbound Call Volume</span>
+                        <span>100% SLA On-Time Delivery</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 card-shadow hover:border-navy-700/30 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="p-3 rounded-xl bg-amber-500 text-slate-950"><i class="fa-solid fa-envelope-open-text text-lg"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold text-navy-900">Enterprise Email Support Channel Overhaul</h3>
+                                <span class="text-xs text-slate-500 font-medium">Multi-Channel Customer SLA Revamp</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slateCustom-600 mb-6 leading-relaxed">
+                            <strong>Challenge:</strong> Slow email response times and high escalation backlogs negatively impacting enterprise account retention.
+                            <br><br>
+                            <strong>Execution:</strong> Spearheaded a dedicated tier-1 email triage initiative, restructuring knowledge base templates and establishing dedicated queue ownership.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600">
+                        <span><i class="fa-solid fa-bolt mr-1"></i> +30% Faster Response Time</span>
+                        <span>91% Email FCR (up from 75%)</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 card-shadow hover:border-navy-700/30 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="p-3 rounded-xl bg-blue-600 text-white"><i class="fa-solid fa-users text-lg"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold text-navy-900">Leadership Engine & Churn Prevention</h3>
+                                <span class="text-xs text-slate-500 font-medium">Internal Talent Pipeline Development</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slateCustom-600 mb-6 leading-relaxed">
+                            <strong>Challenge:</strong> High industry turnover and loss of tribal knowledge during rapid scaling phases.
+                            <br><br>
+                            <strong>Execution:</strong> Established clear promotional milestones, cross-training pathways with Engineering/Sales, and annual anonymous team feedback audits.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-navy-900">
+                        <span><i class="fa-solid fa-award mr-1"></i> 70+ Internal Promotions</span>
+                        <span>5 Consecutive Years Culture Score Growth</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 4 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 card-shadow hover:border-navy-700/30 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="p-3 rounded-xl bg-emerald-600 text-white"><i class="fa-solid fa-boxes-stacked text-lg"></i></span>
+                            <div>
+                                <h3 class="text-xl font-bold text-navy-900">USMC $7M+ Logistics Oversight</h3>
+                                <span class="text-xs text-slate-500 font-medium">Military Supply Chain Precision</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slateCustom-600 mb-6 leading-relaxed">
+                            <strong>Challenge:</strong> Accountable for millions in mission-critical hardware and tactical equipment under strict military audit compliance.
+                            <br><br>
+                            <strong>Execution:</strong> Implemented rigid cycle counts using GCSS-MC, optimized packing procedures, and eliminated inventory discrepancies across all audits.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-600">
+                        <span><i class="fa-solid fa-shield-check mr-1"></i> 100% Audit Accuracy</span>
+                        <span>Zero Equipment Discrepancies</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Interactive Kaizen & Team Capacity Calculator -->
+    <section id="operational-tool" class="py-20 gradient-bg text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="px-3.5 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider border border-amber-500/30">Interactive Operational Tool</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3">Kaizen Process Optimization Calculator</h2>
+                <p class="mt-3 text-slate-300 text-sm sm:text-base">Adjust team parameters to simulate how continuous process improvements impact daily capacity and operational cost savings.</p>
+            </div>
+
+            <div class="bg-navy-800/90 border border-navy-700 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Controls -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label for="team-size" class="text-slate-200">Team Size (Reps/Operators):</label>
+                                <span id="team-size-val" class="text-amber-400 font-bold">25 Reps</span>
+                            </div>
+                            <input type="range" id="team-size" min="5" max="100" value="25" class="w-full h-2 bg-navy-950 rounded-lg appearance-none cursor-pointer accent-amber-500" oninput="updateCalculator()">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label for="daily-volume" class="text-slate-200">Daily Tickets / Tasks Per Rep:</label>
+                                <span id="daily-volume-val" class="text-amber-400 font-bold">40 Tasks</span>
+                            </div>
+                            <input type="range" id="daily-volume" min="10" max="100" value="40" class="w-full h-2 bg-navy-950 rounded-lg appearance-none cursor-pointer accent-amber-500" oninput="updateCalculator()">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label for="fcr-boost" class="text-slate-200">Kaizen Friction Reduction (% Efficiency Gain):</label>
+                                <span id="fcr-boost-val" class="text-emerald-400 font-bold">15% Efficiency</span>
+                            </div>
+                            <input type="range" id="fcr-boost" min="5" max="35" value="15" class="w-full h-2 bg-navy-950 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="updateCalculator()">
+                        </div>
+                    </div>
+
+                    <!-- Live Calculation Results -->
+                    <div class="lg:col-span-5 bg-navy-950/80 rounded-2xl p-6 border border-navy-700 text-center space-y-6">
+                        <h4 class="text-xs uppercase tracking-wider text-slate-400 font-bold border-b border-navy-800 pb-2">Simulated Operational Output</h4>
+                        
+                        <div>
+                            <div class="text-3xl font-extrabold text-white" id="res-daily-capacity">1,000</div>
+                            <div class="text-xs text-slate-400 mt-1">Base Daily Tasks Handled</div>
+                        </div>
+
+                        <div>
+                            <div class="text-3xl font-extrabold text-emerald-400" id="res-hours-saved">150 Hrs</div>
+                            <div class="text-xs text-slate-400 mt-1">Monthly Labor Hours Recovered</div>
+                        </div>
+
+                        <div class="pt-2 border-t border-navy-800">
+                            <div class="text-2xl font-bold text-amber-400" id="res-equivalent-reps">+3.8 Reps</div>
+                            <div class="text-xs text-slate-400 mt-1">Capacity Addition Without New Hire Overhead</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Contact Section & Quick Utilities -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 rounded-full bg-navy-900/10 text-navy-900 text-xs font-bold uppercase tracking-wider">Direct Connect</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Let's Discuss What's Possible</h2>
+                <p class="mt-3 text-slateCustom-600 text-base sm:text-lg">Ready to bring leadership accountability and operational efficiency to your team.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Direct Info Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between card-shadow">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-navy-900 text-amber-400 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-slate-500 uppercase block">Email Address</span>
+                                <span class="text-sm font-bold text-navy-900 break-all">matthew.good.leader@gmail.com</span>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('matthew.good.leader@gmail.com', 'Email address copied!')" class="p-2.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:text-navy-900 hover:bg-slate-100 transition-all" title="Copy Email">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between card-shadow">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-navy-900 text-emerald-400 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-slate-500 uppercase block">Direct Phone</span>
+                                <span class="text-sm font-bold text-navy-900">937-204-2165</span>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('937-204-2165', 'Phone number copied!')" class="p-2.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:text-navy-900 hover:bg-slate-100 transition-all" title="Copy Phone">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between card-shadow">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-navy-900 text-blue-400 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-slate-500 uppercase block">LinkedIn Profile</span>
+                                <span class="text-sm font-bold text-navy-900">linkedin.com/in/matt-good-89286b2b2</span>
+                            </div>
+                        </div>
+                        <a href="https://linkedin.com/in/matt-good-89286b2b2" target="_blank" class="p-2.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:text-navy-900 hover:bg-slate-100 transition-all" title="Open LinkedIn">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="p-6 bg-navy-900 text-white rounded-2xl shadow-xl">
+                        <h4 class="text-lg font-bold mb-2 flex items-center"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Location & Mobility</h4>
+                        <p class="text-sm text-slate-300">Based in <strong>Dayton, OH</strong>. Open to local, hybrid, or regional operations management opportunities across Southwest Ohio.</p>
+                    </div>
+
+                </div>
+
+                <!-- Direct Email Pre-fill Form -->
+                <div class="lg:col-span-7">
+                    <form onsubmit="handleFormSubmit(event)" class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-shadow space-y-6">
+                        <h3 class="text-xl font-bold text-navy-900 mb-2">Send a Message</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Your Name</label>
+                                <input type="text" id="form-name" required placeholder="e.g. Julie Smith" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Your Email</label>
+                                <input type="email" id="form-email" required placeholder="julie@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-slate-800 text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Subject</label>
+                            <input type="text" id="form-subject" required placeholder="Operations Manager Role / Introduction" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-slate-800 text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Message</label>
+                            <textarea id="form-message" rows="4" required placeholder="Hi Matthew, I came across your portfolio and would love to discuss an operations role..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white text-slate-800 text-sm"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-navy-900 hover:bg-navy-800 text-amber-400 font-bold shadow-lg transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send Message via Email Client</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-navy-950 border-t border-navy-900 text-slate-400 text-xs text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; <span id="current-year"></span> Matthew Good. Executive Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Skills Filter Tabs
+        function filterSkills(category) {
+            const cards = document.querySelectorAll('.skill-card');
+            const btns = document.querySelectorAll('.tab-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-navy-900', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+            });
+
+            event.target.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+            event.target.classList.add('bg-navy-900', 'text-white', 'shadow-md');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Kaizen Calculator Logic
+        function updateCalculator() {
+            const reps = parseInt(document.getElementById('team-size').value);
+            const volume = parseInt(document.getElementById('daily-volume').value);
+            const boostPct = parseInt(document.getElementById('fcr-boost').value);
+
+            document.getElementById('team-size-val').textContent = `${reps} Reps`;
+            document.getElementById('daily-volume-val').textContent = `${volume} Tasks`;
+            document.getElementById('fcr-boost-val').textContent = `${boostPct}% Efficiency`;
+
+            const dailyBaseTasks = reps * volume;
+            const monthlySavedHours = Math.round((dailyBaseTasks * (boostPct / 100) * 20 * 0.25)); // assuming 15 mins per task
+            const capacityRepEquivalent = ((reps * (boostPct / 100))).toFixed(1);
+
+            document.getElementById('res-daily-capacity').textContent = dailyBaseTasks.toLocaleString();
+            document.getElementById('res-hours-saved').textContent = `${monthlySavedHours.toLocaleString()} Hrs`;
+            document.getElementById('res-equivalent-reps').textContent = `+${capacityRepEquivalent} Reps`;
+        }
+
+        // Clipboard Copy Utility
+        function copyToClipboard(text, message) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            showToast(message);
+        }
+
+        function copyEmailDirect() {
+            copyToClipboard('matthew.good.leader@gmail.com', 'Matthew\'s email address copied!');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Form Submission to Mailto
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const subject = document.getElementById('form-subject').value;
+            const message = document.getElementById('form-message').value;
+
+            const mailtoUrl = `mailto:matthew.good.leader@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message)}`;
+            
+            window.location.href = mailtoUrl;
+            showToast('Opening your default email client...');
+        }
+
+        // Initialize calculator on page load
+        window.onload = function() {
+            updateCalculator();
+        };
+    </script>
+</body>
+</html>
